@@ -1,15 +1,6 @@
-<!-- success.html -->
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Payment Successful</title>
-</head>
-<body>
-    <h1>Payment Successful!</h1>
-    <p>Your payment for order ID {{ order_id }} was successful.</p>
-    <p>Amount Paid: ${{ amount }}</p>
-    <a href="/">Back to Home</a>
-</body>
-</html>
+{% extends "base.html" %}
+{% block content %}
+<h2>Order Placed Successfully</h2>
+<p>Thank you, {{ order.customer_name }}! Your order has been placed.</p>
+<p>Total Price: ${{ order.total_price }}</p>
+{% endblock %}
