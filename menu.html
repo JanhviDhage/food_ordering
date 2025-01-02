@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>Menu</h2>
+<ul>
+    {% for item in items %}
+    <li>{{ item.name }} - ${{ item.price }}</li>
+    {% endfor %}
+</ul>
+<form action="/order" method="POST">
+    <input type="text" name="items" placeholder="Items">
+    <input type="text" name="total_price" placeholder="Total Price">
+    <button type="submit">Place Order</button>
+</form>
+{% endblock %}
