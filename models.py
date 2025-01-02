@@ -7,6 +7,7 @@ class MenuItem(db.Model):
     description = db.Column(db.String(200), nullable=True)
 
 class Order(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-    item_id = db.Column(db.Integer, db.ForeignKey('menu_item.id'), nullable=False)
-    quantity = db.Column(db.Integer, nullable=False)
+      id = db.Column(db.Integer, primary_key=True)
+    customer_name = db.Column(db.String(100), nullable=False)
+    items = db.Column(db.String(255), nullable=False)
+    total_price = db.Column(db.Float, nullable=False)
