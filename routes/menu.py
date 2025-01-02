@@ -1,4 +1,4 @@
-from flask import Blueprint, render_template
+from flask import render_template, Blueprint
 from app.models import MenuItem
 
 menu_bp = Blueprint('menu', __name__)
