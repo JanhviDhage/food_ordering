@@ -1,0 +1,25 @@
+<!-- payment.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment</title>
+</head>
+<body>
+    <h1>Mock Payment Gateway</h1>
+    <form action="/payment" method="POST">
+        <input type="hidden" name="order_id" value="12345">
+        <input type="hidden" name="amount" value="50.00">
+        
+        <label for="payment_method">Select Payment Method:</label>
+        <select name="payment_method" id="payment_method" required>
+            <option value="credit_card">Credit Card</option>
+            <option value="debit_card">Debit Card</option>
+            <option value="UPI">UPI</option>
+        </select>
+        <br><br>
+        <button type="submit">Pay Now</button>
+    </form>
+</body>
+</html>
