@@ -1,6 +1,7 @@
 from flask import Flask, render_template
 from flask_sqlalchemy import SQLAlchemy
-from menu import menu_bp
+from menu_routes import menu_bp
+
 from order import order_bp
 from payment import payment_bp
 
