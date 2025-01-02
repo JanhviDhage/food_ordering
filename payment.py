@@ -1,32 +1,19 @@
-from flask import Blueprint, redirect, url_for, render_template
-import stripe
+from flask import Blueprint, render_template, request
 
-payment_blueprint = Blueprint('payment', __name__)
+payment_bp = Blueprint('payment', __name__)
 
-stripe.api_key = 'your-stripe-secret-key'
+@payment_bp.route('/payment', methods=['GET', 'POST'])
+def payment():
+    if request.method == 'POST':
+        order_id = request.form['order_id']
+        amount = request.form['amount']
+        payment_method = request.form['payment_method']
 
-@payment_blueprint.route('/pay')
-def process_payment():
-    session = stripe.checkout.Session.create(
-        payment_method_types=['card'],
-        line_items=[{
-            'price_data': {
-                'currency': 'usd',
-                'product_data': {'name': 'Food Order'},
-                'unit_amount': 5000,
-            },
-            'quantity': 1,
-        }],
-        mode='payment',
-        success_url=url_for('payment.success', _external=True),
-        cancel_url=url_for('payment.cancel', _external=True),
-    )
-    return redirect(session.url)
-
-@payment_blueprint.route('/success')
-def success():
-    return render_template('success.html')
-
-@payment_blueprint.route('/cancel')
-def cancel():
-    return render_template('cancel.html')
+        # Simulate a successful payment
+        if payment_method in ['credit_card', 'debit_card', 'UPI']:
+            return render_template('success.html', order_id=order_id, amount=amount)
+        else:
+            return render_template('cancel.html', message="Payment method not supported.")
+    
+    # Show a mock payment form
+    return render_template('payment.html')
